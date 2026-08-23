@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nguyễn Đỗ Quang Trọng | Portfolio & Project Highlights</title>
+  
+  <!-- Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
+              dark: '#0a0f1d',
+              card: '#111827',
+              cardBorder: '#1f2937'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white !important; color: black !important; }
+      .print-break { page-break-inside: avoid; }
+    }
+    /* Custom subtle gradient animation */
+    .glow-bg {
+      background: radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.15), transparent 70%);
+    }
+    .badge-tag {
+      transition: all 0.2s ease-in-out;
+    }
+    .badge-tag:hover {
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen transition-colors duration-300 selection:bg-cyan-500 selection:text-white">
+
+  <!-- Glow Background Effect -->
+  <div class="fixed inset-0 pointer-events-none glow-bg z-0"></div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-emerald-600 text-white px-5 py-3 rounded-xl shadow-2xl flex items-center gap-3 font-medium text-sm border border-emerald-400/30">
+    <i data-lucide="check-circle" class="w-5 h-5"></i>
+    <span id="toast-message">Đã sao chép vào bộ nhớ tạm!</span>
+  </div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+    <!-- Top Navigation / Action Bar -->
+    <header class="flex flex-wrap items-center justify-between gap-4 pb-8 mb-8 border-b border-slate-800/80">
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-cyan-500/20">
+          QT
+        </div>
+        <div>
+          <h1 class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+            Nguyễn Đỗ Quang Trọng
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span> Open for Opportunities
+            </span>
+          </h1>
+          <p class="text-xs sm:text-sm text-slate-400">Backend & Distributed Systems Engineer | .NET & Microservices</p>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-2.5 flex-wrap no-print">
+        <a href="https://github.com/nguyendoquangtrong" target="_blank" rel="noopener noreferrer"
+           class="px-3.5 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs sm:text-sm font-medium border border-slate-700/80 transition flex items-center gap-2 hover:border-slate-600">
+          <i data-lucide="github" class="w-4 h-4 text-cyan-400"></i>
+          GitHub Profile
+        </a>
+        <button onclick="openCopyModal()" 
+                class="px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white text-xs sm:text-sm font-semibold shadow-md shadow-cyan-900/30 transition flex items-center gap-2">
+          <i data-lucide="clipboard-check" class="w-4 h-4"></i>
+          Trích Xuất Điền Form
+        </button>
+        <button onclick="window.print()" title="In hoặc Xuất PDF"
+                class="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 transition">
+          <i data-lucide="printer" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Introduction Hero -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-slate-900/90 via-slate-900/60 to-slate-950 border border-slate-800 rounded-2xl p-6 sm:p-8 backdrop-blur shadow-xl relative overflow-hidden">
+        <div class="absolute -top-24 -right-24 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
+          <div class="max-w-3xl space-y-3">
+            <div class="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-950/60 px-3 py-1 rounded-md border border-cyan-800/40">
+              <i data-lucide="cpu" class="w-3.5 h-3.5"></i> Hồ Sơ Năng Lực & Tóm Tắt Kỹ Thuật
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              Định hướng Chuyên sâu Kỹ thuật Backend & Hệ thống Phân tán
+            </h2>
+            <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+              Tập trung vào kiến trúc <span class="text-cyan-300 font-medium">Microservices (.NET / YARP / CQRS)</span>, xử lý dữ liệu thời gian thực quy mô lớn qua <span class="text-cyan-300 font-medium">Apache Kafka & SignalR</span>, tối ưu hóa truy vấn Database, và nghiên cứu giải pháp <span class="text-cyan-300 font-medium">AI/IoT</span> đạt giải thưởng đổi mới sáng tạo cấp trường & thành phố.
+            </p>
+          </div>
+
+          <!-- Quick Stat Badges -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-1 gap-3 shrink-0 text-left font-mono">
+            <div class="bg-slate-950/80 border border-slate-800/90 rounded-xl p-3.5">
+              <div class="text-xs text-slate-400">Kinh nghiệm chính</div>
+              <div class="text-sm font-bold text-white mt-0.5">.NET Core / C# / Kafka</div>
+            </div>
+            <div class="bg-slate-950/80 border border-slate-800/90 rounded-xl p-3.5">
+              <div class="text-xs text-slate-400">Dự án & Giải thưởng</div>
+              <div class="text-sm font-bold text-cyan-400 mt-0.5">4 Projects • 2 Awards</div>
+            </div>
+            <div class="bg-slate-950/80 border border-slate-800/90 rounded-xl p-3.5 col-span-2 sm:col-span-1">
+              <div class="text-xs text-slate-400">Vai trò dẫn dắt</div>
+              <div class="text-sm font-bold text-emerald-400 mt-0.5">Backend Dev & Team Leader</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tech Stack Tags Carousel/Pills -->
+        <div class="mt-6 pt-6 border-t border-slate-800/80 flex flex-wrap items-center gap-2 text-xs">
+          <span class="text-slate-400 font-medium mr-1 flex items-center gap-1">
+            <i data-lucide="layers" class="w-3.5 h-3.5"></i> Công nghệ:
+          </span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/80 text-cyan-300 border border-slate-700">.NET Core / C#</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/80 text-cyan-300 border border-slate-700">Microservices (YARP)</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/80 text-cyan-300 border border-slate-700">CQRS (MediatR)</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/80 text-cyan-300 border border-slate-700">Apache Kafka</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/80 text-cyan-300 border border-slate-700">gRPC & RESTful</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/80 text-cyan-300 border border-slate-700">Redis Caching</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/80 text-cyan-300 border border-slate-700">SignalR Realtime</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/80 text-cyan-300 border border-slate-700">ONNX (Machine Learning)</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/80 text-cyan-300 border border-slate-700">Docker Compose</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/80 text-cyan-300 border border-slate-700">SQL Custom Functions</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/80 text-cyan-300 border border-slate-700">IoT & Sensors</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Copy Helper Bar for Application Forms (Biểu mẫu ứng tuyển) -->
+    <div class="mb-10 p-5 rounded-2xl bg-gradient-to-r from-cyan-950/40 via-blue-950/30 to-indigo-950/40 border border-cyan-900/40 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div class="space-y-1">
+        <div class="flex items-center gap-2 text-cyan-400 font-semibold text-sm">
+          <i data-lucide="zap" class="w-4 h-4"></i>
+          Bộ công cụ Điền Biểu Mẫu Tuyển Dụng Nhanh (1-Click Copy)
+        </div>
+        <p class="text-xs text-slate-400">
+          Sao chép nội dung ngắn gọn chuẩn hóa để điền trực tiếp vào ô <code class="text-cyan-300">Dự án nổi bật</code>, <code class="text-cyan-300">Kinh nghiệm kỹ thuật</code> hoặc <code class="text-cyan-300">Cover Letter</code>.
+        </p>
+      </div>
+      <div class="flex items-center gap-2 flex-wrap w-full md:w-auto">
+        <button onclick="copyFullPortfolioText()" 
+                class="flex-1 md:flex-initial px-3.5 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition shadow-sm">
+          <i data-lucide="copy" class="w-3.5 h-3.5"></i> Copy Toàn Bộ (Text Form)
+        </button>
+        <button onclick="copyMarkdownText()" 
+                class="flex-1 md:flex-initial px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium flex items-center justify-center gap-1.5 transition">
+          <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Copy Dạng Markdown
+        </button>
+      </div>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="flex items-center justify-between mb-6 flex-wrap gap-3">
+      <div class="flex items-center gap-1.5 bg-slate-900/90 p-1.5 rounded-xl border border-slate-800 text-xs font-medium">
+        <button onclick="filterCategory('all')" id="tab-all" class="category-btn active px-3.5 py-1.5 rounded-lg bg-cyan-600 text-white font-semibold transition">
+          Tất Cả (6)
+        </button>
+        <button onclick="filterCategory('enterprise')" id="tab-enterprise" class="category-btn px-3.5 py-1.5 rounded-lg text-slate-400 hover:text-white transition">
+          🏢 Doanh Nghiệp (1)
+        </button>
+        <button onclick="filterCategory('systems')" id="tab-systems" class="category-btn px-3.5 py-1.5 rounded-lg text-slate-400 hover:text-white transition">
+          ⚙️ Hệ Thống & Big Data (3)
+        </button>
+        <button onclick="filterCategory('awards')" id="tab-awards" class="category-btn px-3.5 py-1.5 rounded-lg text-slate-400 hover:text-white transition">
+          🏆 Giải Thưởng & IoT (2)
+        </button>
+      </div>
+      <div class="text-xs text-slate-500 font-mono hidden sm:block">
+        Click nút <span class="text-cyan-400">📋</span> tại mỗi thẻ để copy riêng dự án đó
+      </div>
+    </div>
+
+    <!-- Project Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="projects-container">
+
+      <!-- PROJECT 1: Phu Hoa Food Platform (Enterprise) -->
+      <div class="project-card print-break bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-6 transition duration-300 flex flex-col justify-between group shadow-lg" data-category="enterprise">
+        <div>
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20 uppercase tracking-wide">
+                1. Dự Án Doanh Nghiệp
+              </span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-mono text-slate-400 bg-slate-800">
+                HiAI
+              </span>
+            </div>
+            <button onclick="copyProjectSnippet('phuhoa')" title="Sao chép nội dung dự án này"
+                    class="p-2 rounded-lg bg-slate-800/80 hover:bg-cyan-600 text-slate-400 hover:text-white transition border border-slate-700/60">
+              <i data-lucide="copy" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <h3 class="text-lg font-bold text-white group-hover:text-cyan-300 transition">
+            Phu Hoa Food Platform
+          </h3>
+          <div class="text-xs font-medium text-cyan-400 mb-3 flex items-center gap-1.5">
+            <i data-lucide="briefcase" class="w-3.5 h-3.5"></i> Backend Developer
+          </div>
+
+          <p class="text-sm text-slate-300 leading-relaxed mb-4">
+            Thiết kế và phát triển hệ thống <span class="text-white font-medium">RESTful API</span> cho nền tảng thương mại thực phẩm; tối ưu hóa truy vấn cơ sở dữ liệu với các <span class="text-cyan-300 font-medium">SQL functions tùy chỉnh</span>, phối hợp tích hợp cùng Frontend và chuẩn hóa luồng xử lý lỗi phục vụ môi trường <span class="text-emerald-400 font-medium">production</span>.
+          </p>
+
+          <!-- Highlights Checklist -->
+          <ul class="text-xs text-slate-400 space-y-1.5 mb-4 pl-1">
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5"></i>
+              <span>Thiết kế kiến trúc RESTful API chuẩn hóa, mở rộng cho thương mại điện tử.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5"></i>
+              <span>Tối ưu query DB & viết Custom SQL Functions tăng tốc độ xử lý dữ liệu.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5"></i>
+              <span>Chuẩn hóa Exception Handling & Logging đảm bảo độ tin cậy khi go-live.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-4 border-t border-slate-800/80 flex flex-wrap gap-1.5">
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">RESTful API</span>
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">Database Tuning</span>
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">Custom SQL Functions</span>
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">Production Pipeline</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 2: E-Commerce Microservices System -->
+      <div class="project-card print-break bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-6 transition duration-300 flex flex-col justify-between group shadow-lg" data-category="systems">
+        <div>
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 uppercase tracking-wide">
+                2. Hệ Thống Phân Tán
+              </span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-mono text-slate-400 bg-slate-800">
+                Personal Project
+              </span>
+            </div>
+            <button onclick="copyProjectSnippet('microservices')" title="Sao chép nội dung dự án này"
+                    class="p-2 rounded-lg bg-slate-800/80 hover:bg-cyan-600 text-slate-400 hover:text-white transition border border-slate-700/60">
+              <i data-lucide="copy" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <h3 class="text-lg font-bold text-white group-hover:text-cyan-300 transition">
+            E-Commerce Microservices System
+          </h3>
+          <div class="text-xs font-medium text-cyan-400 mb-3 flex items-center gap-1.5">
+            <i data-lucide="server" class="w-3.5 h-3.5"></i> .NET Distributed Architecture
+          </div>
+
+          <p class="text-sm text-slate-300 leading-relaxed mb-4">
+            Xây dựng kiến trúc phân tán <span class="text-white font-medium">Microservices trên nền tảng .NET</span> với <span class="text-cyan-300 font-medium">YARP API Gateway</span>. Áp dụng <span class="text-white font-medium">CQRS (MediatR)</span>, giao tiếp bất đồng bộ qua <span class="text-cyan-300 font-medium">Apache Kafka</span>, gọi nội bộ qua <span class="text-cyan-300 font-medium">gRPC</span>, tối ưu hóa truy xuất với <span class="text-cyan-300 font-medium">Redis Caching</span> và đóng gói qua Docker Compose.
+          </p>
+
+          <!-- Highlights Checklist -->
+          <ul class="text-xs text-slate-400 space-y-1.5 mb-4 pl-1">
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400 shrink-0 mt-0.5"></i>
+              <span>Tách rời các domain service độc lập với YARP Reverse Proxy điều hướng.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400 shrink-0 mt-0.5"></i>
+              <span>Event-Driven Architecture với Apache Kafka đảm bảo eventual consistency.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400 shrink-0 mt-0.5"></i>
+              <span>gRPC truyền tin nhị phân siêu tốc giữa các microservices nội bộ.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-4 border-t border-slate-800/80 flex flex-wrap gap-1.5">
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-cyan-300 border border-slate-700/60">.NET Core</span>
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">YARP Gateway</span>
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">CQRS & MediatR</span>
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">Apache Kafka</span>
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">gRPC</span>
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">Redis</span>
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">Docker Compose</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 3: Fraud-Bank Real-time Detection System -->
+      <div class="project-card print-break bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-6 transition duration-300 flex flex-col justify-between group shadow-lg" data-category="systems">
+        <div>
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20 uppercase tracking-wide">
+                3. Big Data & Real-time AI
+              </span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-mono text-emerald-400 bg-emerald-950/40 border border-emerald-800/30">
+                Team Leader (3 thành viên)
+              </span>
+            </div>
+            <button onclick="copyProjectSnippet('fraudbank')" title="Sao chép nội dung dự án này"
+                    class="p-2 rounded-lg bg-slate-800/80 hover:bg-cyan-600 text-slate-400 hover:text-white transition border border-slate-700/60">
+              <i data-lucide="copy" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <h3 class="text-lg font-bold text-white group-hover:text-cyan-300 transition">
+            Fraud-Bank – Real-time Detection System
+          </h3>
+          <div class="text-xs font-medium text-cyan-400 mb-3 flex items-center gap-1.5">
+            <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i> Big Data & Machine Learning Pipeline
+          </div>
+
+          <p class="text-sm text-slate-300 leading-relaxed mb-4">
+            Dẫn dắt nhóm 3 thành viên xây dựng hệ thống xử lý giao dịch ngân hàng thời gian thực. Tích hợp <span class="text-cyan-300 font-medium">Apache Kafka</span> để stream luồng dữ liệu lớn, nhúng mô hình <span class="text-white font-medium">Machine Learning (ONNX Runtime)</span> phát hiện giao dịch bất thường và hiển thị cảnh báo tức thì lên dashboard qua <span class="text-cyan-300 font-medium">SignalR</span>.
+          </p>
+
+          <!-- Highlights Checklist -->
+          <ul class="text-xs text-slate-400 space-y-1.5 mb-4 pl-1">
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5"></i>
+              <span>Quản lý phân rã task, review kiến trúc hệ thống và điều phối 3 thành viên.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5"></i>
+              <span>Stream ingestion độ trễ thấp với Kafka + suy luận model ONNX cực nhanh.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5"></i>
+              <span>Real-time Live Alerting qua WebSocket / SignalR hỗ trợ giám sát gian lận.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-4 border-t border-slate-800/80 flex flex-wrap gap-1.5">
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-amber-300 border border-slate-700/60">Apache Kafka</span>
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">ONNX Model Runtime</span>
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">SignalR WebSocket</span>
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">Real-time Dashboard</span>
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">Big Data Stream</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 4: ShoesStore (Academic / Clean Architecture) -->
+      <div class="project-card print-break bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-6 transition duration-300 flex flex-col justify-between group shadow-lg" data-category="systems">
+        <div>
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-bold bg-purple-500/10 text-purple-400 border border-purple-500/20 uppercase tracking-wide">
+                4. Academic Project
+              </span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-mono text-slate-400 bg-slate-800">
+                E-Commerce API
+              </span>
+            </div>
+            <button onclick="copyProjectSnippet('shoesstore')" title="Sao chép nội dung dự án này"
+                    class="p-2 rounded-lg bg-slate-800/80 hover:bg-cyan-600 text-slate-400 hover:text-white transition border border-slate-700/60">
+              <i data-lucide="copy" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <h3 class="text-lg font-bold text-white group-hover:text-cyan-300 transition">
+            ShoesStore Platform
+          </h3>
+          <div class="text-xs font-medium text-cyan-400 mb-3 flex items-center gap-1.5">
+            <i data-lucide="code" class="w-3.5 h-3.5"></i> ASP.NET Core Web API & Clean Design
+          </div>
+
+          <p class="text-sm text-slate-300 leading-relaxed mb-4">
+            Xây dựng hệ thống thương mại điện tử chuẩn kiến trúc <span class="text-white font-medium">N-tier, Repository & Service pattern</span> trên nền <span class="text-cyan-300 font-medium">ASP.NET Core Web API</span>. Tích hợp cơ chế bảo mật xác thực <span class="text-white font-medium">JWT</span> và kết nối cổng thanh toán trực tuyến bên thứ ba (<span class="text-cyan-300 font-medium">PayOS, Cloudinary CDN</span>).
+          </p>
+
+          <!-- Highlights Checklist -->
+          <ul class="text-xs text-slate-400 space-y-1.5 mb-4 pl-1">
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-purple-400 shrink-0 mt-0.5"></i>
+              <span>Thiết kế cấu trúc phân tầng N-Tier rõ ràng, dễ bảo trì và mở rộng code.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-purple-400 shrink-0 mt-0.5"></i>
+              <span>Bảo mật JWT Authentication, Role-based Access Control (RBAC).</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-purple-400 shrink-0 mt-0.5"></i>
+              <span>Tích hợp cổng thanh toán trực tuyến PayOS và lưu trữ media qua Cloudinary.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-4 border-t border-slate-800/80 flex flex-wrap gap-1.5">
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">ASP.NET Core API</span>
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">N-Tier Architecture</span>
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">JWT Auth</span>
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">PayOS Payment</span>
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">Cloudinary</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 5: Smart Helmet (Award / Hardware / IoT) -->
+      <div class="project-card print-break bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-6 transition duration-300 flex flex-col justify-between group shadow-lg" data-category="awards">
+        <div>
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-bold bg-rose-500/10 text-rose-400 border border-rose-500/20 uppercase tracking-wide">
+                5. Giải Thưởng Đổi Mới Sáng Tạo
+              </span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-mono text-yellow-400 bg-yellow-950/40 border border-yellow-800/30">
+                Top 20 Finalist
+              </span>
+            </div>
+            <button onclick="copyProjectSnippet('smarthelmet')" title="Sao chép nội dung dự án này"
+                    class="p-2 rounded-lg bg-slate-800/80 hover:bg-cyan-600 text-slate-400 hover:text-white transition border border-slate-700/60">
+              <i data-lucide="copy" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <h3 class="text-lg font-bold text-white group-hover:text-cyan-300 transition">
+            Smart Helmet (Mũ Bảo Hiểm Thông Minh)
+          </h3>
+          <div class="text-xs font-medium text-rose-400 mb-3 flex items-center gap-1.5">
+            <i data-lucide="award" class="w-3.5 h-3.5"></i> Bach Khoa Innovation 2025 – Finalist
+          </div>
+
+          <p class="text-sm text-slate-300 leading-relaxed mb-4">
+            Dự án nghiên cứu & phát triển <span class="text-white font-medium">mũ bảo hiểm thông minh</span> tích hợp hệ thống cảm biến chuyên dụng phát hiện va chạm, cảnh báo nguy hiểm thời gian thực và xử lý tín hiệu cảm biến phục vụ cứu hộ khẩn cấp.
+          </p>
+
+          <!-- Highlights Checklist -->
+          <ul class="text-xs text-slate-400 space-y-1.5 mb-4 pl-1">
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-rose-400 shrink-0 mt-0.5"></i>
+              <span>Vượt qua hàng trăm đội thi lọt vào Top 20 Chung kết Bach Khoa Innovation 2025.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-rose-400 shrink-0 mt-0.5"></i>
+              <span>Lập trình xử lý tín hiệu cảm biến độ nhạy cao và thuật toán phát hiện tai nạn.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-4 border-t border-slate-800/80 flex flex-wrap gap-1.5">
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-rose-300 border border-slate-700/60">Hardware & IoT</span>
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">Sensors Data Processing</span>
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">Embedded C/C++</span>
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">Bach Khoa Innovation</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 6: Smart Greenhouse (Award / Green Innovation) -->
+      <div class="project-card print-break bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-6 transition duration-300 flex flex-col justify-between group shadow-lg" data-category="awards">
+        <div>
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase tracking-wide">
+                6. Giải Thưởng Sáng Tạo Xanh
+              </span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-mono text-yellow-400 bg-yellow-950/40 border border-yellow-800/30">
+                Top 12 Toàn Quốc
+              </span>
+            </div>
+            <button onclick="copyProjectSnippet('greenhouse')" title="Sao chép nội dung dự án này"
+                    class="p-2 rounded-lg bg-slate-800/80 hover:bg-cyan-600 text-slate-400 hover:text-white transition border border-slate-700/60">
+              <i data-lucide="copy" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <h3 class="text-lg font-bold text-white group-hover:text-cyan-300 transition">
+            Smart Greenhouse (Nhà Kính Thông Minh)
+          </h3>
+          <div class="text-xs font-medium text-emerald-400 mb-3 flex items-center gap-1.5">
+            <i data-lucide="award" class="w-3.5 h-3.5"></i> Green Innovation 2025 - HUST (Top 12)
+          </div>
+
+          <p class="text-sm text-slate-300 leading-relaxed mb-4">
+            Hệ thống nhà kính tự động hóa toàn diện nhằm <span class="text-white font-medium">giám sát và điều khiển vi khí hậu</span> (nhiệt độ, độ ẩm, ánh sáng, nồng độ dinh dưỡng) theo thời gian thực giúp tối ưu năng suất và tiết kiệm năng lượng.
+          </p>
+
+          <!-- Highlights Checklist -->
+          <ul class="text-xs text-slate-400 space-y-1.5 mb-4 pl-1">
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5"></i>
+              <span>Vinh danh Top 12 cuộc thi Green Innovation 2025 do HUST tổ chức.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5"></i>
+              <span>Tự động hóa chu trình phản hồi vi khí hậu qua mạch điều khiển và telemetry.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-4 border-t border-slate-800/80 flex flex-wrap gap-1.5">
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-emerald-300 border border-slate-700/60">Smart Agriculture</span>
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">Microclimate Control</span>
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">Telemetry & Sensors</span>
+          <span class="badge-tag px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">HUST Award</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Technical Competencies Summary Matrix -->
+    <section class="mt-14 pt-10 border-t border-slate-800/80">
+      <div class="flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-cyan-400 mb-3">
+        <i data-lucide="sliders" class="w-3.5 h-3.5"></i> Năng lực Cốt lõi & Kiến trúc
+      </div>
+      <h2 class="text-xl sm:text-2xl font-bold text-white mb-6">
+        Bảng Tổng Hợp Chuyên Môn Kỹ Thuật
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <!-- Col 1 -->
+        <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-5 space-y-3">
+          <div class="flex items-center gap-2 text-cyan-400 font-bold text-sm">
+            <i data-lucide="server" class="w-4 h-4"></i> Backend & Kiến trúc
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Thành thạo hệ sinh thái <strong>.NET (C#)</strong>, thiết kế RESTful API, triển khai mô hình <strong>Microservices</strong>, <strong>CQRS (MediatR)</strong>, <strong>N-Tier</strong> và <strong>Repository/Service Pattern</strong>.
+          </p>
+        </div>
+
+        <!-- Col 2 -->
+        <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-5 space-y-3">
+          <div class="flex items-center gap-2 text-amber-400 font-bold text-sm">
+            <i data-lucide="cpu" class="w-4 h-4"></i> Stream & Real-time Big Data
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Kinh nghiệm triển khai <strong>Apache Kafka</strong> cho luồng message bất đồng bộ quy mô lớn, <strong>SignalR</strong> cho giao tiếp real-time hai chiều, và nhúng <strong>ONNX Model</strong> cho suy luận trực tiếp.
+          </p>
+        </div>
+
+        <!-- Col 3 -->
+        <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-5 space-y-3">
+          <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+            <i data-lucide="database" class="w-4 h-4"></i> Tối Ưu, Caching & DevOps
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Tối ưu hóa Database với <strong>Custom SQL Functions</strong>, <strong>Redis Caching</strong> giảm tải hệ thống, đóng gói triển khai nhất quán qua <strong>Docker Compose</strong>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-14 pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <div>
+        © 2026 Nguyễn Đỗ Quang Trọng • Hồ Sơ Năng Lực & Tóm Tắt Kỹ Thuật
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/nguyendoquangtrong" target="_blank" class="hover:text-cyan-400 flex items-center gap-1 transition">
+          <i data-lucide="github" class="w-3.5 h-3.5"></i> github.com/nguyendoquangtrong
+        </a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Modal: Copy Tool for Application Forms -->
+  <div id="copyModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700/80 rounded-2xl max-w-2xl w-full p-6 shadow-2xl relative max-h-[90vh] flex flex-col">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+        <div class="flex items-center gap-2">
+          <i data-lucide="clipboard-list" class="w-5 h-5 text-cyan-400"></i>
+          <h3 class="font-bold text-white text-base sm:text-lg">Trích Xuất Nội Dung Điền Biểu Mẫu Ứng Tuyển</h3>
+        </div>
+        <button onclick="closeCopyModal()" class="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="py-4 space-y-4 overflow-y-auto flex-1 text-xs">
+        <div>
+          <label class="block text-slate-300 font-semibold mb-1">1. Bản Tóm Tắt Ngắn Gọn (Thích hợp ô Textarea Form ứng tuyển):</label>
+          <textarea id="plainTextSummary" rows="6" readonly class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 font-mono text-slate-300 text-xs focus:outline-none focus:border-cyan-500 select-all"></textarea>
+          <div class="mt-2 flex justify-end">
+            <button onclick="copyElementText('plainTextSummary', 'Bản tóm tắt ngắn gọn')" class="px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-medium text-xs flex items-center gap-1.5">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép đoạn này
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 font-semibold mb-1">2. Bản Định Dạng Markdown (Thích hợp Notion / GitHub / Email):</label>
+          <textarea id="markdownSummary" rows="7" readonly class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 font-mono text-slate-300 text-xs focus:outline-none focus:border-cyan-500 select-all"></textarea>
+          <div class="mt-2 flex justify-end">
+            <button onclick="copyElementText('markdownSummary', 'Bản Markdown')" class="px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-medium text-xs flex items-center gap-1.5">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép Markdown
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-800 flex justify-end">
+        <button onclick="closeCopyModal()" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs">
+          Đóng cửa sổ
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Data Snippets
+    const snippets = {
+      phuhoa: `Phu Hoa Food Platform (HiAI – Backend Developer): Thiết kế và phát triển hệ thống RESTful API cho nền tảng thương mại thực phẩm; tối ưu hóa truy vấn cơ sở dữ liệu với các SQL functions tùy chỉnh, phối hợp frontend tích hợp và chuẩn hóa luồng xử lý lỗi phục vụ môi trường production.`,
+      microservices: `E-Commerce Microservices System (Personal Project): Xây dựng kiến trúc phân tán Microservices trên nền tảng .NET với YARP API Gateway. Áp dụng CQRS (MediatR), giao tiếp bất đồng bộ qua Apache Kafka, gọi nội bộ qua gRPC, tối ưu hóa truy xuất dữ liệu với Redis Caching và đóng gói toàn bộ qua Docker Compose.`,
+      fraudbank: `Fraud-Bank – Real-time Detection System (Big Data Project – Team Leader): Dẫn dắt nhóm 3 thành viên xây dựng hệ thống xử lý giao dịch thời gian thực. Tích hợp Apache Kafka để stream dữ liệu, nhúng mô hình Machine Learning (ONNX) phát hiện gian lận và hiển thị cảnh báo trực tiếp lên dashboard bằng SignalR.`,
+      shoesstore: `ShoesStore (Academic Project): Xây dựng hệ thống thương mại điện tử chuẩn kiến trúc N-tier, Repository & Service pattern trên nền ASP.NET Core Web API, tích hợp bảo mật JWT và cổng thanh toán bên thứ ba (PayOS, Cloudinary).`,
+      smarthelmet: `Smart Helmet (Top 20 Finalist – Bach Khoa Innovation 2025): Dự án mũ bảo hiểm thông minh tích hợp cảm biến cảnh báo và xử lý tín hiệu.`,
+      greenhouse: `Smart Greenhouse (Top 12 – Green Innovation 2025 - HUST): Hệ thống nhà kính tự động hóa giám sát và điều khiển vi khí hậu.`
+    };
+
+    const fullPlainText = `HỒ SƠ NĂNG LỰC DỰ ÁN & SẢN PHẨM NỔI BẬT
+
+1. Dự án Thực tế Doanh nghiệp:
+- Phu Hoa Food Platform (HiAI – Backend Developer): Thiết kế và phát triển hệ thống RESTful API cho nền tảng thương mại thực phẩm; tối ưu hóa truy vấn cơ sở dữ liệu với các SQL functions tùy chỉnh, phối hợp frontend tích hợp và chuẩn hóa luồng xử lý lỗi phục vụ môi trường production.
+
+2. Dự án Hệ thống & Nghiên cứu Công nghệ:
+- E-Commerce Microservices System (Personal Project): Xây dựng kiến trúc phân tán Microservices trên nền tảng .NET với YARP API Gateway. Áp dụng CQRS (MediatR), giao tiếp bất đồng bộ qua Apache Kafka, gọi nội bộ qua gRPC, tối ưu hóa truy xuất dữ liệu với Redis Caching và đóng gói toàn bộ qua Docker Compose.
+- Fraud-Bank – Real-time Detection System (Big Data Project – Team Leader): Dẫn dắt nhóm 3 thành viên xây dựng hệ thống xử lý giao dịch thời gian thực. Tích hợp Apache Kafka để stream dữ liệu, nhúng mô hình Machine Learning (ONNX) phát hiện gian lận và hiển thị cảnh báo trực tiếp lên dashboard bằng SignalR.
+- ShoesStore (Academic Project): Xây dựng hệ thống thương mại điện tử chuẩn kiến trúc N-tier, Repository & Service pattern trên nền ASP.NET Core Web API, tích hợp bảo mật JWT và cổng thanh toán bên thứ ba (PayOS, Cloudinary).
+
+3. Giải thưởng Đổi mới Sáng tạo & Phần cứng/IoT:
+- Smart Helmet (Top 20 Finalist – Bach Khoa Innovation 2025): Dự án mũ bảo hiểm thông minh tích hợp cảm biến cảnh báo và xử lý tín hiệu.
+- Smart Greenhouse (Top 12 – Green Innovation 2025 - HUST): Hệ thống nhà kính tự động hóa giám sát và điều khiển vi khí hậu.
+
+4. Hồ sơ Trực tuyến & Mã nguồn:
+- GitHub: https://github.com/nguyendoquangtrong`;
+
+    const fullMarkdownText = `### HỒ SƠ NĂNG LỰC DỰ ÁN & SẢN PHẨM NỔI BẬT
+
+#### 1. Dự án Thực tế Doanh nghiệp
+* **Phu Hoa Food Platform (HiAI – Backend Developer):** Thiết kế và phát triển hệ thống RESTful API cho nền tảng thương mại thực phẩm; tối ưu hóa truy vấn cơ sở dữ liệu với các SQL functions tùy chỉnh, phối hợp frontend tích hợp và chuẩn hóa luồng xử lý lỗi phục vụ môi trường production.
+
+#### 2. Dự án Hệ thống & Nghiên cứu Công nghệ
+* **E-Commerce Microservices System (Personal Project):** Xây dựng kiến trúc phân tán Microservices trên nền tảng .NET với YARP API Gateway. Áp dụng CQRS (MediatR), giao tiếp bất đồng bộ qua Apache Kafka, gọi nội bộ qua gRPC, tối ưu hóa truy xuất dữ liệu với Redis Caching và đóng gói toàn bộ qua Docker Compose.
+* **Fraud-Bank – Real-time Detection System (Big Data Project – Team Leader):** Dẫn dắt nhóm 3 thành viên xây dựng hệ thống xử lý giao dịch thời gian thực. Tích hợp Apache Kafka để stream dữ liệu, nhúng mô hình Machine Learning (ONNX) phát hiện gian lận và hiển thị cảnh báo trực tiếp lên dashboard bằng SignalR.
+* **ShoesStore (Academic Project):** Xây dựng hệ thống thương mại điện tử chuẩn kiến trúc N-tier, Repository & Service pattern trên nền ASP.NET Core Web API, tích hợp bảo mật JWT và cổng thanh toán bên thứ ba (PayOS, Cloudinary).
+
+#### 3. Giải thưởng Đổi mới Sáng tạo & Phần cứng/IoT
+* **Smart Helmet (Top 20 Finalist – Bach Khoa Innovation 2025):** Dự án mũ bảo hiểm thông minh tích hợp cảm biến cảnh báo và xử lý tín hiệu.
+* **Smart Greenhouse (Top 12 – Green Innovation 2025 - HUST):** Hệ thống nhà kính tự động hóa giám sát và điều khiển vi khí hậu.
+
+#### 4. Hồ sơ Trực tuyến & Mã nguồn
+* **GitHub:** [github.com/nguyendoquangtrong](https://github.com/nguyendoquangtrong)`;
+
+    // Populate modal inputs
+    document.getElementById('plainTextSummary').value = fullPlainText;
+    document.getElementById('markdownSummary').value = fullMarkdownText;
+
+    // Toast Notification helper
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.innerText = message || 'Đã sao chép vào bộ nhớ tạm!';
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 2500);
+    }
+
+    // Copy Actions
+    function copyTextToClipboard(text, successMsg) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(successMsg || 'Đã sao chép thành công!');
+      }).catch(err => {
+        console.error('Copy failed', err);
+      });
+    }
+
+    function copyProjectSnippet(key) {
+      if (snippets[key]) {
+        copyTextToClipboard(snippets[key], 'Đã copy thông tin dự án!');
+      }
+    }
+
+    function copyFullPortfolioText() {
+      copyTextToClipboard(fullPlainText, 'Đã copy toàn bộ hồ sơ năng lực!');
+    }
+
+    function copyMarkdownText() {
+      copyTextToClipboard(fullMarkdownText, 'Đã copy toàn bộ dạng Markdown!');
+    }
+
+    function copyElementText(elementId, label) {
+      const el = document.getElementById(elementId);
+      if (el) {
+        copyTextToClipboard(el.value, `Đã copy ${label}!`);
+      }
+    }
+
+    // Modal Control
+    function openCopyModal() {
+      const modal = document.getElementById('copyModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeCopyModal() {
+      const modal = document.getElementById('copyModal');
+      modal.classList.remove('flex');
+      modal.classList.add('hidden');
+    }
+
+    // Close modal on escape or background click
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeCopyModal();
+    });
+    document.getElementById('copyModal').addEventListener('click', (e) => {
+      if (e.target.id === 'copyModal') closeCopyModal();
+    });
+
+    // Category Filter
+    function filterCategory(category) {
+      const cards = document.querySelectorAll('.project-card');
+      const buttons = document.querySelectorAll('.category-btn');
+      
+      // Update button styles
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-cyan-600', 'text-white', 'font-semibold');
+        btn.classList.add('text-slate-400');
+      });
+      const activeBtn = document.getElementById(`tab-${category}`);
+      if (activeBtn) {
+        activeBtn.classList.remove('text-slate-400');
+        activeBtn.classList.add('bg-cyan-600', 'text-white', 'font-semibold');
+      }
+
+      // Filter cards
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+
